@@ -32,7 +32,7 @@ export default function Home() {
         <div className="flex max-w-4xl mb-5">
           <DescriptionIcon className="text-6xl mb-4 mx-auto" sx={{fontSize: 80}}/>
           <div className="text-lg text-black mt-4 ml-4">
-            ポモドーロタイマーは、集中力を高めるための時間管理ツールです。<br></br>25分間の集中作業と5分間の休憩を繰り返すことで、効率的な学習をサポートします。
+            問題と答えの二面でカードを作り、効率的に暗記を行うことができます。<br></br>自分のペースで学習を進めることができ、復習も簡単です。
           </div>
         </div>
         <div className="mb-10">
