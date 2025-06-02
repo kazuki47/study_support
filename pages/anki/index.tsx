@@ -51,13 +51,14 @@ export default function Blog() {
           フォルダ作成ページ
         </Link>
       </div>
-      <div >
-        {folder.folder.map((item, idx) => (
-          <button key={folder.id[idx]} onClick={() => Click(folder.id[idx])}>
-            {item}
-          </button>
-        ))}
-        </div>
+      <div>
+  {Array.isArray(folder.folder) &&
+    folder.folder.map((item, idx) => (
+      <button key={folder.id[idx]} onClick={() => Click(folder.id[idx])}>
+        {item}
+      </button>
+    ))}
+</div>
     </div>
   );
 }
