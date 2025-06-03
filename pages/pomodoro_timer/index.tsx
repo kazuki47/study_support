@@ -1,8 +1,10 @@
 import * as React from 'react';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 import { Header } from '../../components/Header';
 import Timer from '../../components/Timer';
+import { Button } from '@mui/material';
 
 export default function PomodoroPage() {
     const router = useRouter();
@@ -44,13 +46,22 @@ export default function PomodoroPage() {
     
         useEffect(() => {
           Logincheck();
-         }, []);
+         }, []); 
+
     return (
         <div>
             <Header />
-            <main>
-                <Timer />
-            </main>
+            <div className="relative">
+                <div className="absolute top-4 right-4 z-10">
+                    <Link href="/pomodoro_timer/time">
+                        <Button variant="outlined">学習時間</Button>
+                    </Link>
+                </div>
+                
+                <main className="flex align-center justify-center items-center text-center mt-20 mb-20">
+                    <Timer />
+                </main>
+            </div>
         </div>
     );
 }
