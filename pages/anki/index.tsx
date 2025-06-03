@@ -20,7 +20,7 @@ export default function Blog() {
   // Fetch data from the API
   const fetchData = async () => {
     try {
-      const res = await fetch("http://127.0.0.1:5000/learn/getfolder", {
+      const res = await fetch("http://localhost:5000/learn/getfolder", {
         method: "GET",
         credentials: "include",
         headers: { "Content-Type": "application/json" },
@@ -44,7 +44,7 @@ export default function Blog() {
   }, []);
 
   return (
-    <div>
+    <div style={{ maxWidth: 800, margin: "40px auto", padding: 24, border: "1px solid #ccc", borderRadius: 8, color: "black" }}>
       
       <div >
         <Link href="/anki/folder" >
