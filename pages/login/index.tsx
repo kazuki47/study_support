@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { Header } from '../../components/Header';
 
 const Login = () => {
     const router = useRouter();
@@ -55,6 +56,8 @@ const Login = () => {
   };
 
   return (
+    <div>
+      <Header />
     <div style={{ maxWidth: 400, margin: "40px auto", padding: 24, border: "1px solid #ccc", borderRadius: 8,color: "black" }}>
         <Link href="/signup" style={{ textAlign: "center", marginBottom: 24 }}>新規登録</Link>
         <Link href="/login/logout" style={{ textAlign: "center", marginBottom: 24 }}>ログアウト</Link>
@@ -87,6 +90,7 @@ const Login = () => {
         {error && <div style={{ color: "red", marginBottom: 16 }}>{error}</div>}
         <button type="submit" style={{ width: "100%", padding: 10 }}>ログイン</button>
       </form>
+    </div>
     </div>
   );
 };

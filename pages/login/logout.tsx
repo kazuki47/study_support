@@ -1,8 +1,47 @@
 import React from "react";
+import { useEffect } from "react";
 import { useRouter } from "next/router";
+import { Header } from '../../components/Header';
 
 const Logout = () => {
     const router = useRouter();
+     const Loginchek = async () => {
+          try {
+            const res = await fetch("http://localhost:5000/account/loginnow", {
+                method: "GET",
+                headers: { "Content-Type": "application/json" },
+                credentials: "include",
+            });
+    
+            
+    
+            const re = await res.json();
+            console.log("con:",re.msg);
+            if(re.msg==="yes"){
+              
+            }
+            else{
+                 alert("ログインしてません");
+    
+              router.push({
+                pathname: "/login"
+            });
+            }
+    
+    
+    
+    
+        } catch (error) {
+             alert("バックエンドとの通信エラーです");
+          router.push({
+            pathname: "/login"
+        });
+        }
+        };
+    
+        useEffect(() => {
+          Loginchek();
+         }, []);
    
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -45,6 +84,8 @@ const Logout = () => {
   };
 
   return (
+    <div>
+      <Header />
     <div style={{ maxWidth: 400, margin: "40px auto", padding: 24, border: "1px solid #ccc", borderRadius: 8,color: "black" }}>
        
       <h2>ログアウト</h2>
@@ -52,6 +93,7 @@ const Logout = () => {
         
         <button onClick={handleSubmit} style={{ width: "100%", padding: 10 }}>ログアウト</button>
      
+    </div>
     </div>
   );
 };

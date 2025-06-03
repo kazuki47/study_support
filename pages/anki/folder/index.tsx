@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { Header } from '../../../components/Header';
 
 const Makefolder = () => {
   const [foloder, setFoloder] = useState("");
@@ -50,6 +51,8 @@ const Makefolder = () => {
   };
 
   return (
+    <div>
+      <Header />
     <div style={{ maxWidth: 400, margin: "40px auto", padding: 24, border: "1px solid #ccc", borderRadius: 8,color: "black"  }}>
       <Link href="/anki" style={{ textAlign: "center", marginBottom: 24 }}>ファルダ一覧へ</Link>
       <h2>フォルダ登録</h2>
@@ -72,6 +75,7 @@ const Makefolder = () => {
         
         <button type="submit" style={{ width: "100%", padding: 10 }}>新規登録</button>
       </form>
+    </div>
     </div>
   );
 };

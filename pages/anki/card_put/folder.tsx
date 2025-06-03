@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
-
+import { Header } from '../../../components/Header';
 
 const Cardput = () => {
     const router = useRouter();
@@ -53,6 +53,8 @@ const Cardput = () => {
   };
 
   return (
+    <div>
+      <Header />
     <div style={{ maxWidth: 400, margin: "40px auto", padding: 24, border: "1px solid #ccc", borderRadius: 8,color: "black"  }}>
       <h2>新規登録</h2>
       <form onSubmit={handleSubmit}>
@@ -84,6 +86,7 @@ const Cardput = () => {
    
         <button type="submit" style={{ width: "100%", padding: 10 }}>新規登録</button>
       </form>
+    </div>
     </div>
   );
 };
