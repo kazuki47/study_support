@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link.js";
 import { useRouter } from "next/router";
+import { Header } from '../../../components/Header';
 type folderData = {
   id: number[];
   question: string[];
@@ -9,6 +10,39 @@ type folderData = {
 
 export default function Getall() {
     const router = useRouter();
+     const Loginchek = async () => {
+      try {
+        const res = await fetch("http://localhost:5000/account/loginnow", {
+            method: "GET",
+            headers: { "Content-Type": "application/json" },
+            credentials: "include",
+        });
+
+        
+
+        const re = await res.json();
+        console.log("con:",re.msg);
+        if(re.msg==="yes"){
+          
+        }
+        else{
+             alert("ログインしてません");
+
+          router.push({
+            pathname: "/login"
+        });
+        }
+
+
+
+
+    } catch (error) {
+         alert("バックエンドとの通信エラーです");
+      router.push({
+        pathname: "/login"
+    });
+    }
+    };
   const [card, setCard] = useState<folderData>({ id: [], question: [] , answer: [] });
 
   const Click =  (id: number) => {
@@ -42,12 +76,13 @@ export default function Getall() {
 
   // useEffectでfetchDataを呼び出す
   useEffect(() => {
+    Loginchek();
     fetchData();
   }, []);
 
   return (
     <div style={{ maxWidth: 800, margin: "40px auto", padding: 24, border: "1px solid #ccc", borderRadius: 8, color: "black" }}>
-      
+      <Header />
       <div >
         <Link href={{pathname: "/anki/card_put/folder",query: { id: router.query.id} }} >
           カード登録ページ

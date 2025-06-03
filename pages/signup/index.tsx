@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Link from "next/link";
+import { Header } from '../../components/Header';
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -9,6 +10,7 @@ const Signup = () => {
   const [error, setError] = useState("");
 
   const handleSubmit = async(e: React.FormEvent) => {
+
     e.preventDefault();
     if (!user||!email || !password || !confirm) {
       setError("全ての項目を入力してください。");
@@ -50,6 +52,8 @@ const Signup = () => {
   };
 
   return (
+    <div>
+      <Header />
     <div style={{ maxWidth: 400, margin: "40px auto", padding: 24, border: "1px solid #ccc", borderRadius: 8,color: "black"  }}>
       <Link href="/login" style={{ textAlign: "center", marginBottom: 24 }}>ログインへ戻る</Link>
       <h2>新規登録</h2>
@@ -104,6 +108,7 @@ const Signup = () => {
         {error && <div style={{ color: "red", marginBottom: 16 }}>{error}</div>}
         <button type="submit" style={{ width: "100%", padding: 10 }}>新規登録</button>
       </form>
+    </div>
     </div>
   );
 };

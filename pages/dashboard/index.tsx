@@ -1,6 +1,7 @@
 import {useEffect } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { Header } from '../../components/Header';
 
 export default function Create() {
     const router = useRouter();
@@ -47,6 +48,7 @@ export default function Create() {
 
 return(
     <div>
+    <Header />
   <h2>ダッシュボードへようこそ</h2>
     <div>
         <div><div>ここではポモドーロタイマーのアプリケーションが使えます</div><Link href="/pomodoro_timer">ポモドーロタイマー</Link></div>

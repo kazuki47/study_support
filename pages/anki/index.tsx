@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link.js";
 import { useRouter } from "next/router";
+import { Header } from '../../components/Header';
 type folderData = {
   id: number[];
   folder: string[];
@@ -8,6 +9,39 @@ type folderData = {
 
 export default function Blog() {
     const router = useRouter();
+     const Loginchek = async () => {
+      try {
+        const res = await fetch("http://localhost:5000/account/loginnow", {
+            method: "GET",
+            headers: { "Content-Type": "application/json" },
+            credentials: "include",
+        });
+
+        
+
+        const re = await res.json();
+        console.log("con:",re.msg);
+        if(re.msg==="yes"){
+          
+        }
+        else{
+             alert("ログインしてません");
+
+          router.push({
+            pathname: "/login"
+        });
+        }
+
+
+
+
+    } catch (error) {
+         alert("バックエンドとの通信エラーです");
+      router.push({
+        pathname: "/login"
+    });
+    }
+    };
   const [folder, setFolder] = useState<folderData>({ id: [], folder: [] });
 
   const Click =  (id: number) => {
@@ -40,10 +74,13 @@ export default function Blog() {
 
   // useEffectでfetchDataを呼び出す
   useEffect(() => {
+    Loginchek();
     fetchData();
   }, []);
 
   return (
+    <div>
+      <Header />
     <div style={{ maxWidth: 800, margin: "40px auto", padding: 24, border: "1px solid #ccc", borderRadius: 8, color: "black" }}>
       
       <div >
@@ -59,6 +96,7 @@ export default function Blog() {
       </button>
     ))}
 </div>
+    </div>
     </div>
   );
 }
