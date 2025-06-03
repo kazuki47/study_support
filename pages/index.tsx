@@ -2,6 +2,7 @@ import * as React from "react";
 import Link from "next/link";
 import { Geist, Geist_Mono } from "next/font/google";
 import Button from '@mui/material/Button';
+import { Header } from "../components/Header";
 import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
 import DescriptionIcon from '@mui/icons-material/Description';
 
@@ -18,6 +19,7 @@ const geistMono = Geist_Mono({
 export default function Home() {
   return (
     <div>
+      <Header />
       <main className="items-center justify-items-center text-center">
         <div className="text-4xl font-bold mt-28 mb-14">本アプリはあなたの学習をサポートします</div>
         <div className="text-2xl font-bold mb-10">アプリ内容</div>
