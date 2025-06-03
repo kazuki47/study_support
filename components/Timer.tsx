@@ -96,7 +96,7 @@ const Timer = () => {
     let newSessionCount = sessionCount;
 
     if (currentSessionType === SessionType.Work || currentSessionType === SessionType.Stopped) { // 作業中または停止中からの終了
-      recordStudyTime(workMinutesConfig);
+      
       newSessionCount++;
       setSessionCount(newSessionCount);
       if (newSessionCount % sessionsBeforeLongBreak === 0) {
@@ -139,6 +139,12 @@ const Timer = () => {
   };
 
   const resetTimer = (): void => {
+    if ((currentSessionType === SessionType.Work || currentSessionType === SessionType.Stopped) && (minutes !== workMinutesConfig || seconds !== 0)) {
+      const studiedTime = workMinutesConfig - minutes;
+      if (studiedTime > 0) {
+        recordStudyTime(studiedTime);
+      }
+    }
     setIsActive(false);
     setCurrentSessionType(SessionType.Work); // リセット時は必ず「作業中」表示の準備
     setMinutes(workMinutesConfig);
@@ -179,7 +185,7 @@ const Timer = () => {
             bg-red-500 hover:bg-red-600
           `}
         >
-          リセット
+          終了
         </button>
       </div>
       <p className="mt-10 text-lg text-gray-500">
