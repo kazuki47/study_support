@@ -48,7 +48,7 @@ export default function Create() {
 
 return(
     <div>
-    <Header />
+    
   <h2>ダッシュボードへようこそ</h2>
     <div>
         <div><div>ここではポモドーロタイマーのアプリケーションが使えます</div><Link href="/pomodoro_timer">ポモドーロタイマー</Link></div>
