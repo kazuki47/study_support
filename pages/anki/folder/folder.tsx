@@ -17,7 +17,7 @@ export default function Folder() {
         
       <div className="p-4">
         <Link href={{pathname: "/anki/card/folder",query: { id: id} }} className="text-blue-500 hover:underline mb-4 block">登録カード一覧</Link>
-        <Link href={{pathname: "/anki/game",query: { id: id} }} className="text-blue-500 hover:underline mb-4 block">ゲーム開始</Link>
+        <Link href={{pathname: "/anki/game/folder",query: { id: id} }} className="text-blue-500 hover:underline mb-4 block">ゲーム開始</Link>
       </div>
       </div>
     );

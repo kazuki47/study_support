@@ -80,7 +80,7 @@ export default function Blog() {
 
   return (
     <div>
-      
+      <Header />
     <div style={{ maxWidth: 800, margin: "40px auto", padding: 24, border: "1px solid #ccc", borderRadius: 8, color: "black" }}>
       
       <div >
