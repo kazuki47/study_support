@@ -47,7 +47,7 @@ export default function Getall() {
 
   const Click =  (id: number) => {
     router.push({
-        pathname: "/anki/folder/folder",
+        pathname: "/anki/card/card",
         query: { id: id }
         });
   };
@@ -82,7 +82,7 @@ export default function Getall() {
 
   return (
     <div style={{ maxWidth: 800, margin: "40px auto", padding: 24, border: "1px solid #ccc", borderRadius: 8, color: "black" }}>
-      <Header />
+    
       <div >
         <Link href={{pathname: "/anki/card_put/folder",query: { id: router.query.id} }} >
           カード登録ページ
