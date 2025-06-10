@@ -2,30 +2,43 @@ import React, { useState, useEffect } from 'react';
 import { Header } from '../../components/Header';
 
 interface StudyRecord {
-  id: number;
   date: string;
   time: number;
-  timestamp: string;
 }
 
 interface StudyData {
-  records: StudyRecord[];
+  time: number[];
+  date: string[];
 }
 
 const StudyTimeDisplay = () => {
   const [studyData, setStudyData] = useState<StudyRecord[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>('');
-
   // サーバーから学習データを取得する関数
   const fetchStudyData = async () => {
     try {
       setLoading(true);
-      const response = await fetch('http://localhost:5000/timer');
+      const response = await fetch('http://localhost:5000/timer', {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include', // 認証情報を含める
+      });
       
       if (response.ok) {
         const data: StudyData = await response.json();
-        setStudyData(data.records || []);
+        
+        // バックエンドのレスポンス形式 {time: [25, 30, 20], date: ["2025-06-10", "2025-06-09", "2025-06-08"]} 
+        // を StudyRecord[] 形式に変換
+        if (data.time && data.date && data.time.length === data.date.length) {
+          const records: StudyRecord[] = data.time.map((time, index) => ({
+            time: time,
+            date: data.date[index]
+          }));
+          setStudyData(records);
+        } else {
+          setStudyData([]);
+        }
         setError('');
       } else {
         setError('データの取得に失敗しました');

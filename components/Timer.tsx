@@ -61,7 +61,6 @@ const Timer = () => {
       if (interval) clearInterval(interval);
     };
   }, [isActive, seconds, minutes, workMinutesConfig, sessionCount, currentSessionType]); // currentSessionTypeを依存配列に追加
-
   const recordStudyTime = async (studyMinutes: number) => {
     try {
       const currentDate = new Date().toISOString().split('T')[0]; // YYYY-MM-DD形式
@@ -71,6 +70,7 @@ const Timer = () => {
         headers: {
           'Content-Type': 'application/json',
         },
+        credentials: 'include', // 認証情報を含める
         body: JSON.stringify({
           date: currentDate,
           time: studyMinutes
@@ -79,7 +79,12 @@ const Timer = () => {
 
       if (response.ok) {
         const result = await response.json();
-        console.log('勉強時間が記録されました:', result);
+        if (result.msg === 'ok') {
+          console.log('勉強時間が記録されました:', result);
+        } else if (result.msg === 'no') {
+          console.error('認証が必要です');
+          alert('ログインが必要です');
+        }
       } else {
         console.error('記録に失敗しました:', response.statusText);
       }
