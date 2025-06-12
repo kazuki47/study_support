@@ -58,39 +58,41 @@ const Login = () => {
   return (
     <div>
       <Header />
-    <div style={{ maxWidth: 400, margin: "40px auto", padding: 24, border: "1px solid #ccc", borderRadius: 8,color: "black" }}>
-        <Link href="/signup" style={{ textAlign: "center", marginBottom: 24 }}>新規登録</Link>
-        <Link href="/login/logout" style={{ textAlign: "center", marginBottom: 24 }}>ログアウト</Link>
-      <h2>ログイン</h2>
-      <form onSubmit={handleSubmit}>
-        <div style={{ marginBottom: 16 }}>
-          <label>
-            メールアドレス<br />
-            <input
-              type="email"
-              value={email}
-              onChange={e => setEmail(e.target.value)}
-              style={{ width: "100%", padding: 8, marginTop: 4 }}
-              required
-            />
-          </label>
+      <div style={{ maxWidth: 400, margin: "100px auto", padding: 24, border: "1px solid #ccc", borderRadius: 8,color: "black" }}>
+        <div style={{ display: "flex", flexDirection: "row", alignItems: "center", marginBottom: 24 }}>
+          <Link href="/signup" className="hover:text-gray-500" style={{ textAlign: "center", marginBottom: 24, justifyContent: "center", margin: "0 auto" }}>新規登録</Link>
+          <Link href="/login/logout" className="hover:text-gray-500" style={{ textAlign: "center", marginBottom: 24, justifyContent: "center", margin: "0 auto" }}>ログアウト</Link>
         </div>
-        <div style={{ marginBottom: 16 }}>
-          <label>
-            パスワード<br />
-            <input
-              type="password"
-              value={password}
-              onChange={e => setPassword(e.target.value)}
-              style={{ width: "100%", padding: 8, marginTop: 4 }}
-              required
-            />
-          </label>
-        </div>
-        {error && <div style={{ color: "red", marginBottom: 16 }}>{error}</div>}
-        <button type="submit" style={{ width: "100%", padding: 10 }}>ログイン</button>
-      </form>
-    </div>
+        <h2 className="text-center">ログイン</h2>
+        <form onSubmit={handleSubmit}>
+          <div style={{ marginBottom: 16 }}>
+            <label>
+              メールアドレス<br />
+              <input
+                type="email"
+                value={email}
+                onChange={e => setEmail(e.target.value)}
+                style={{ width: "100%", padding: 8, marginTop: 4 , borderRadius: 4, border: "1px solid #ccc"}}
+                required
+              />
+            </label>
+          </div>
+          <div style={{ marginBottom: 16 }}>
+            <label>
+              パスワード<br />
+              <input
+                type="password"
+                value={password}
+                onChange={e => setPassword(e.target.value)}
+                style={{ width: "100%", padding: 8, marginTop: 4, borderRadius: 4, border: "1px solid #ccc"}}
+                required
+              />
+            </label>
+          </div>
+          {error && <div style={{ color: "red", marginBottom: 16 }}>{error}</div>}
+          <button className="hover:text-gray-500" type="submit" style={{ width: "40%", padding: 10, borderRadius: 4, border: "1px solid #ccc", alignContent: "center", display: "flex", justifyContent: "center", margin: "0 auto"}}>ログイン</button>
+        </form>
+      </div>
     </div>
   );
 };

@@ -47,13 +47,19 @@ export default function Create() {
 
 
 return(
-    <div>
-    
-  <h2>ダッシュボードへようこそ</h2>
-    <div>
-        <div><div>ここではポモドーロタイマーのアプリケーションが使えます</div><Link href="/pomodoro_timer">ポモドーロタイマー</Link></div>
-        <div><div>ここでは暗記アプリケーションが使えます</div><Link href="/anki">暗記</Link></div>
-    </div>
+  <div>
+    <Header />
+    <h2 className="mt-20 font-bold text-2xl">ダッシュボードへようこそ</h2>
+      <div style={{ maxWidth: 1000, margin: "100px auto", padding: 24, textAlign: "center", flexDirection: "row", display: "flex", gap: "20px", justifyContent: "center" }}>
+          <div>
+            <div>ここではポモドーロタイマーのアプリケーションが使えます<br /></div>
+            <Link href="/pomodoro_timer" className="">↳ポモドーロタイマー</Link>
+          </div>
+          <div>
+            <div>ここでは暗記アプリケーションが使えます</div>
+            <Link href="/anki" className="">↳暗記</Link>
+          </div>
+      </div>
   </div>
 );
 }

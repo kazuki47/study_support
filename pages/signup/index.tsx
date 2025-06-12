@@ -54,61 +54,61 @@ const Signup = () => {
   return (
     <div>
       <Header />
-    <div style={{ maxWidth: 400, margin: "40px auto", padding: 24, border: "1px solid #ccc", borderRadius: 8,color: "black"  }}>
-      <Link href="/login" style={{ textAlign: "center", marginBottom: 24 }}>ログインへ戻る</Link>
-      <h2>新規登録</h2>
-      <form onSubmit={handleSubmit}>
-        <div style={{ marginBottom: 16 }}>
+      <div style={{ maxWidth: 400, margin: "100px auto", padding: 24, border: "1px solid #ccc", borderRadius: 8,color: "black"  }}>
+        <Link href="/login" style={{ textAlign: "center", marginBottom: 24 }}>ログインへ戻る</Link>
+        <h2 style={{ textAlign: "center" }}>新規登録</h2>
+        <form onSubmit={handleSubmit}>
+          <div style={{ marginBottom: 16 }}>
+              <label>
+                  ユーザー名<br />
+                  <input
+                  type="text"
+                  value={user}
+                  onChange={e => setUser(e.target.value)}
+                  style={{ width: "100%", padding: 8, marginTop: 4, borderRadius: 4, border: "1px solid #ccc" }}
+                  required
+                  />
+              </label>
             <label>
-                ユーザー名<br />
-                <input
-                type="text"
-                value={user}
-                onChange={e => setUser(e.target.value)}
-                style={{ width: "100%", padding: 8, marginTop: 4 }}
-                required
-                />
-            </label>
-          <label>
 
-            メールアドレス<br />
-            <input
-              type="email"
-              value={email}
-              onChange={e => setEmail(e.target.value)}
-              style={{ width: "100%", padding: 8, marginTop: 4 }}
-              required
-            />
-          </label>
-        </div>
-        <div style={{ marginBottom: 16 }}>
-          <label>
-            パスワード<br />
-            <input
-              type="password"
-              value={password}
-              onChange={e => setPassword(e.target.value)}
-              style={{ width: "100%", padding: 8, marginTop: 4 }}
-              required
-            />
-          </label>
-        </div>
-        <div style={{ marginBottom: 16 }}>
-          <label>
-            パスワード（確認）<br />
-            <input
-              type="password"
-              value={confirm}
-              onChange={e => setConfirm(e.target.value)}
-              style={{ width: "100%", padding: 8, marginTop: 4 }}
-              required
-            />
-          </label>
-        </div>
-        {error && <div style={{ color: "red", marginBottom: 16 }}>{error}</div>}
-        <button type="submit" style={{ width: "100%", padding: 10 }}>新規登録</button>
-      </form>
-    </div>
+              メールアドレス<br />
+              <input
+                type="email"
+                value={email}
+                onChange={e => setEmail(e.target.value)}
+                style={{ width: "100%", padding: 8, marginTop: 4, borderRadius: 4, border: "1px solid #ccc" }}
+                required
+              />
+            </label>
+          </div>
+          <div style={{ marginBottom: 16 }}>
+            <label>
+              パスワード<br />
+              <input
+                type="password"
+                value={password}
+                onChange={e => setPassword(e.target.value)}
+                style={{ width: "100%", padding: 8, marginTop: 4, borderRadius: 4, border: "1px solid #ccc" }}
+                required
+              />
+            </label>
+          </div>
+          <div style={{ marginBottom: 16 }}>
+            <label>
+              パスワード（確認）<br />
+              <input
+                type="password"
+                value={confirm}
+                onChange={e => setConfirm(e.target.value)}
+                style={{ width: "100%", padding: 8, marginTop: 4, borderRadius: 4, border: "1px solid #ccc" }}
+                required
+              />
+            </label>
+          </div>
+          {error && <div style={{ color: "red", marginBottom: 16 }}>{error}</div>}
+          <button type="submit" style={{ width: "100%", padding: 10, marginTop: 40, borderRadius: 4, border: "1px solid #ccc", cursor: "pointer" }}>新規登録</button>
+        </form>
+      </div>
     </div>
   );
 };
