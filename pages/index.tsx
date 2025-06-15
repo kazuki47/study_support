@@ -20,7 +20,7 @@ export default function Home() {
   return (
     <div>
       <Header />
-      <main className="items-center justify-items-center text-center">
+      <main className="items-center justify-items-center text-center text-black ">
         <div className="text-4xl font-bold mt-28 mb-14">本アプリはあなたの学習をサポートします</div>
         <div className="text-2xl font-bold mb-10">アプリ内容</div>
         <div className="text-xl font-bold mb-6">ポモドーロタイマー</div>

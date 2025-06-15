@@ -144,73 +144,208 @@ const [answer, setAnswer] = useState<string>("");
   }, []);
 
   return (
-   <div style={{ maxWidth: 800, margin: "40px auto", padding: 24, border: "1px solid #ccc", borderRadius: 8, color: "black" }}>
-    <Header />
-    <h1>カード詳細</h1>
-    {!editMode ? (
-      <>
-        <p><strong>質問:</strong> {question}</p>
-        <p><strong>回答:</strong> {answer}</p>
+   // ...existing code...
+<div
+  style={{
+    maxWidth: 800,
+    margin: "40px auto",
+    padding: 32,
+    border: "1px solid #e5e7eb",
+    borderRadius: 16,
+    background: "#fff",
+    boxShadow: "0 4px 16px rgba(0,0,0,0.07)",
+    color: "#222",
+  }}
+>
+  <Header />
+  <h1
+    style={{
+      fontSize: 28,
+      fontWeight: 700,
+      textAlign: "center",
+      marginBottom: 32,
+      letterSpacing: 1,
+    }}
+  >
+    カード詳細
+  </h1>
+  {!editMode ? (
+    <>
+      <div
+        style={{
+          background: "#f3f4f6",
+          borderRadius: 10,
+          padding: 24,
+          marginBottom: 32,
+          boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
+        }}
+      >
+        <p style={{ fontSize: 18, marginBottom: 16 }}>
+          <strong style={{ color: "#2563eb" }}>質問:</strong> {question}
+        </p>
+        <p style={{ fontSize: 18 }}>
+          <strong style={{ color: "#059669" }}>回答:</strong> {answer}
+        </p>
+      </div>
+      <div style={{ display: "flex", gap: 16, justifyContent: "center" }}>
         <button
           onClick={() => {
             setEditMode(true);
             setEditQuestion(question);
             setEditAnswer(answer);
           }}
-          style={{ marginTop: 20, padding: "10px 20px", backgroundColor: "#0070f3", color: "white", border: "none", borderRadius: 5 }}
+          style={{
+            padding: "12px 32px",
+            backgroundColor: "#2563eb",
+            color: "white",
+            border: "none",
+            borderRadius: 8,
+            fontWeight: 600,
+            fontSize: 16,
+            boxShadow: "0 2px 8px rgba(37,99,235,0.08)",
+            cursor: "pointer",
+            transition: "background 0.2s",
+          }}
+          onMouseOver={e => ((e.target as HTMLButtonElement).style.background = "#1d4ed8")}
+          onMouseOut={e => ((e.target as HTMLButtonElement).style.background = "#2563eb")}
         >
           編集
         </button>
         <button
-          onClick={() => {Carddel(id)}}
-          style={{ marginTop: 20, padding: "10px 20px", backgroundColor: "#e00", color: "white", border: "none", borderRadius: 5 }}
+          onClick={() => {
+            Carddel(id);
+          }}
+          style={{
+            padding: "12px 32px",
+            backgroundColor: "#ef4444",
+            color: "white",
+            border: "none",
+            borderRadius: 8,
+            fontWeight: 600,
+            fontSize: 16,
+            boxShadow: "0 2px 8px rgba(239,68,68,0.08)",
+            cursor: "pointer",
+            transition: "background 0.2s",
+          }}
+          onMouseOver={e => ((e.target as HTMLButtonElement).style.background = "#b91c1c")}
+          onMouseOut={e => ((e.target as HTMLButtonElement).style.background = "#ef4444")}
         >
           削除
         </button>
-      </>
-    ) : (
-      <form
-        onSubmit={e => {
-          e.preventDefault();
-          Cardedit(id, editQuestion, editAnswer);
-          
-        }}
-        style={{ marginTop: 20 }}
-      >
-        <div>
-  <label htmlFor="edit-question">質問: </label>
-  <input
-    id="edit-question"
-    type="text"
-    value={editQuestion}
-    onChange={e => setEditQuestion(e.target.value)}
-    style={{ width: "100%", marginBottom: 10 }}
-    placeholder="質問を入力してください"
-  />
-</div>
-<div>
-  <label htmlFor="edit-answer">回答: </label>
-  <input
-    id="edit-answer"
-    type="text"
-    value={editAnswer}
-    onChange={e => setEditAnswer(e.target.value)}
-    style={{ width: "100%", marginBottom: 10 }}
-    placeholder="回答を入力してください"
-  />
-</div>
-        <button type="submit" style={{ marginRight: 10, padding: "10px 20px", backgroundColor: "#0070f3", color: "white", border: "none", borderRadius: 5 }}>
+      </div>
+    </>
+  ) : (
+    <form
+      onSubmit={e => {
+        e.preventDefault();
+        Cardedit(id, editQuestion, editAnswer);
+      }}
+      style={{
+        marginTop: 20,
+        background: "#f9fafb",
+        borderRadius: 10,
+        padding: 24,
+        boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
+      }}
+    >
+      <div style={{ marginBottom: 20 }}>
+        <label htmlFor="edit-question" style={{ fontWeight: 500, fontSize: 15 }}>
+          質問
+          <input
+            id="edit-question"
+            type="text"
+            value={editQuestion}
+            onChange={e => setEditQuestion(e.target.value)}
+            style={{
+              width: "100%",
+              marginTop: 8,
+              marginBottom: 10,
+              padding: "10px 12px",
+              border: "1px solid #d1d5db",
+              borderRadius: 6,
+              fontSize: 15,
+              outline: "none",
+              boxSizing: "border-box",
+              transition: "border 0.2s",
+            }}
+            placeholder="質問を入力してください"
+            required
+            onFocus={e => ((e.target as HTMLInputElement).style.border = "1.5px solid #2563eb")}
+            onBlur={e => ((e.target as HTMLInputElement).style.border = "1px solid #d1d5db")}
+          />
+        </label>
+      </div>
+      <div style={{ marginBottom: 24 }}>
+        <label htmlFor="edit-answer" style={{ fontWeight: 500, fontSize: 15 }}>
+          回答
+          <input
+            id="edit-answer"
+            type="text"
+            value={editAnswer}
+            onChange={e => setEditAnswer(e.target.value)}
+            style={{
+              width: "100%",
+              marginTop: 8,
+              marginBottom: 10,
+              padding: "10px 12px",
+              border: "1px solid #d1d5db",
+              borderRadius: 6,
+              fontSize: 15,
+              outline: "none",
+              boxSizing: "border-box",
+              transition: "border 0.2s",
+            }}
+            placeholder="回答を入力してください"
+            required
+            onFocus={e => ((e.target as HTMLInputElement).style.border = "1.5px solid #2563eb")}
+            onBlur={e => ((e.target as HTMLInputElement).style.border = "1px solid #d1d5db")}
+          />
+        </label>
+      </div>
+      <div style={{ display: "flex", gap: 16, justifyContent: "center" }}>
+        <button
+          type="submit"
+          style={{
+            padding: "12px 32px",
+            backgroundColor: "#2563eb",
+            color: "white",
+            border: "none",
+            borderRadius: 8,
+            fontWeight: 600,
+            fontSize: 16,
+            cursor: "pointer",
+            boxShadow: "0 2px 8px rgba(37,99,235,0.08)",
+            transition: "background 0.2s",
+          }}
+          onMouseOver={e => ((e.target as HTMLButtonElement).style.background = "#1d4ed8")}
+          onMouseOut={e => ((e.target as HTMLButtonElement).style.background = "#2563eb")}
+        >
           保存
         </button>
         <button
           type="button"
           onClick={() => setEditMode(false)}
-          style={{ padding: "10px 20px", backgroundColor: "#aaa", color: "white", border: "none", borderRadius: 5 }}
+          style={{
+            padding: "12px 32px",
+            backgroundColor: "#6b7280",
+            color: "white",
+            border: "none",
+            borderRadius: 8,
+            fontWeight: 600,
+            fontSize: 16,
+            cursor: "pointer",
+            boxShadow: "0 2px 8px rgba(107,114,128,0.08)",
+            transition: "background 0.2s",
+          }}
+          onMouseOver={e => ((e.target as HTMLButtonElement).style.background = "#374151")}
+          onMouseOut={e => ((e.target as HTMLButtonElement).style.background = "#6b7280")}
         >
           キャンセル
         </button>
-      </form>
-    )}
-  </div>
+      </div>
+    </form>
+  )}
+</div>
+// ...existing code...
   );
 }

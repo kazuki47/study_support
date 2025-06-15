@@ -47,17 +47,17 @@ export default function Create() {
 
 
 return(
-  <div>
+  <div className="text-black ">
     <Header />
     <h2 className="mt-20 font-bold text-2xl">ダッシュボードへようこそ</h2>
       <div style={{ maxWidth: 1000, margin: "100px auto", padding: 24, textAlign: "center", flexDirection: "row", display: "flex", gap: "20px", justifyContent: "center" }}>
           <div>
             <div>ここではポモドーロタイマーのアプリケーションが使えます<br /></div>
-            <Link href="/pomodoro_timer" className="">↳ポモドーロタイマー</Link>
+            <Link href="/pomodoro_timer" className="inline-block px-4 py-2 mt-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition">↳ポモドーロタイマー</Link>
           </div>
           <div>
             <div>ここでは暗記アプリケーションが使えます</div>
-            <Link href="/anki" className="">↳暗記</Link>
+            <Link href="/anki" className="inline-block px-4 py-2 mt-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition">↳暗記</Link>
           </div>
       </div>
   </div>
